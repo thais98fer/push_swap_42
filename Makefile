@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = push_swap
-FLAGS = -Wall -Wextra -Werror -g3 -I
+FLAGS = -Wall -Wextra -Werror -g3 -I libft
 CC = cc
 
 LIBFT_A = libft/libft.a
@@ -28,8 +28,8 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT_A)
-	$(CC) $(OBJS) $(LIBFT_A) -o $(NAME) 
-	
+	$(CC) $(OBJS) $(LIBFT_A) -o $(NAME)
+
 $(LIBFT_A):
 	@$(MAKE) -C $(LIBFT_DIR) all
 
@@ -38,11 +38,11 @@ $(LIBFT_A):
 
 clean:
 	@rm -f $(OBJS)
-	rm -f *.o
+	@rm -f *.o
 
 fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
