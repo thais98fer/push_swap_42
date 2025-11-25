@@ -16,11 +16,11 @@
 # include "libft/libft.h"
 # include <stdlib.h>
 
-int		main(int argc, char **argv);
-int		double_arg(int *stack_a);
-int		*convert_args(char **argv, int size);
-int		check_args(char **argv);
-int		is_number(char *str);
-long	ft_atol(const char *str);
+int	main(int argc, char **argv);
+int	double_arg(int *stack_a);
+int	*convert_args(char **argv, int size);
+int	check_args(char **argv);
+int	is_number(char *str);
+int	*ft_error(char **argv, int size);
 
 #endif

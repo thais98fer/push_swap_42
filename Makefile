@@ -39,9 +39,11 @@ $(LIBFT_A):
 clean:
 	@rm -f $(OBJS)
 	@rm -f *.o
+	@$(MAKE) clean -C $(LIBFT_DIR)
 
 fclean: clean
 	@rm -f $(NAME)
+	@$(MAKE) fclean -C $(LIBFT_DIR)
 
 re: fclean all
 
