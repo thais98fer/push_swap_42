@@ -6,7 +6,7 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:03:23 by thfernan          #+#    #+#             */
-/*   Updated: 2025/11/26 17:31:55 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/11/27 17:39:48 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push(t_stack *src, t_stack *dst)
 {
-	int 	i;
+	int	i;
 
 	i = src->size;
 	if (src->size == 0)

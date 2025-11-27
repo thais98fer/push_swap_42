@@ -6,7 +6,7 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:03:28 by thfernan          #+#    #+#             */
-/*   Updated: 2025/11/26 17:33:43 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/11/27 17:23:52 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ void	swap(t_stack *pile)
 void	sa(t_stack *a)
 {
 	swap(a);
-	ft_printf("sa");
+	ft_printf("sa\n");
 }
 
 void	sb(t_stack *b)
 {
 	swap(b);
-	ft_printf("sb");
+	ft_printf("sb\n");
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
 	swap(a);
 	swap(b);
-	ft_printf("ss");
+	ft_printf("ss\n");
 }

@@ -6,7 +6,7 @@
 #    By: thfernan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/20 16:35:20 by thfernan          #+#    #+#              #
-#    Updated: 2025/11/26 17:08:32 by thfernan         ###   ########.fr        #
+#    Updated: 2025/11/27 14:03:40 by thfernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT_A = libft/libft.a
 LIBFT_DIR = libft
 
 # push_swap.c
-SRCS = main.c check_args.c push.c \
+SRCS = push_swap.c check_args.c push.c \
        reverse_rotate.c rotate.c swap.c
 
 OBJS = $(SRCS:.c=.o)
