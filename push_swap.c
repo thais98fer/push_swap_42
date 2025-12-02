@@ -12,7 +12,7 @@
 
 #include	"push_swap.h"
 
-void	sort_three(t_stack *a)
+void	ft_sort_three(t_stack *a)
 {
 	if (a->stack[0] > a->stack[1] && a->stack[1] < a->stack[2]
 		&& a->stack[0] < a->stack[2])
@@ -36,7 +36,7 @@ void	sort_three(t_stack *a)
 		rra(a);
 }
 
-int	is_sorted(int *pile_a, int size)
+int	ft_is_sorted(int *pile_a, int size)
 {
 	int	i;
 
@@ -50,35 +50,57 @@ int	is_sorted(int *pile_a, int size)
 	return (1);
 }
 
+void	ft_turk_sort(t_stack *a, t_stack *b)
+{
+	int	size;
+
+	size = a->size;
+	if (ft_is_sorted(a->stack, a->size))
+		return ;
+	if (a->size == 2)
+	{
+		if (a->stack[0] > a->stack[1])
+			sa(a);
+		return ;
+	}
+	if (a->size == 3)
+	{
+		ft_sort_three(a);
+		return ;
+	}
+	while (size > 3)
+	{
+		pb(a, b);
+		size--;
+	}
+}
+
+//int	ft_push_swap()
+
 int	main(int argc, char **argv)
 {
-	t_stack	stack_a;
+	t_stack	a;
+	t_stack	b;
 	int		i;
 
 	if (argc < 2)
 		return (0);
 	i = 0;
-	stack_a.size = argc - 1;
-	stack_a.stack = check_args(argv, stack_a.size);
-	if (is_sorted(stack_a.stack, stack_a.size))
+	a.size = argc - 1;
+	b.size = argc - 1;
+	a.stack = check_args(argv, a.size);
+	b.stack = (int *)malloc(b.size * (sizeof(int)));
+	ft_turk_sort(&a, &b);
+	if (a.size > 1)
 	{
-		ft_printf("Pile A: ");
-		while (i < stack_a.size)
+		ft_printf("Pile A | Pile B\n");
+		while (i < a.size)
 		{
-			ft_printf("%d\n", stack_a.stack[i]);
+			ft_printf("%d        %d\n", a.stack[i], b.stack[i]);
 			i++;
 		}
 	}
-	else if (stack_a.size == 3)
-	{
-		sort_three(&stack_a);
-		ft_printf("Pile A: ");
-		while (i < stack_a.size)
-		{
-			ft_printf("%d\n", stack_a.stack[i]);
-			i++;
-		}		
-	}
-	free(stack_a.stack);
+	free(a.stack);
+	free(b.stack);
 	return (0);
 }

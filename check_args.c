@@ -54,7 +54,7 @@ int	double_arg(int *stack_a, int size)
 
 int	is_number(char *str)
 {
-	while (*str == '+' || *str == '-' || *str == ' ' || *str == '\t')
+	if (*str == '+' || *str == '-' || *str == ' ' || *str == '\t')
 		str++;
 	if (*str == '\0')
 		return (0);
@@ -88,7 +88,7 @@ int	*check_args(char **argv, int size)
 		stack_a[i] = ft_atol(argv[i + 1]);
 		i++;
 	}
-	if (!double_arg(stack_a, size)) //|| !int_limits(stack_a, size))
+	if (!double_arg(stack_a, size))
 		ft_error();
 	return (stack_a);
 }
