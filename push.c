@@ -6,17 +6,17 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:03:23 by thfernan          #+#    #+#             */
-/*   Updated: 2025/11/27 17:39:48 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:28:49 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include "push_swap.h"
 
 void	push(t_stack *src, t_stack *dest)
 {
 	int	i;
 
-	i = src->size;
+	i = dest->size;
 	if (src->size == 0)
 		return ;
 	while (i > 0)

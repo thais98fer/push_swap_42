@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thfernan <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/20 16:35:20 by thfernan          #+#    #+#              #
-#    Updated: 2025/11/27 14:03:40 by thfernan         ###   ########.fr        #
+#    Updated: 2025/12/05 12:34:07 by thfernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ LIBFT_DIR = libft
 
 # push_swap.c
 SRCS = push_swap.c check_args.c push.c \
-       reverse_rotate.c rotate.c swap.c
+       reverse_rotate.c rotate.c swap.c \
+	   execute_moves.c cost_moves.c \
+	   find_target.c
 
 OBJS = $(SRCS:.c=.o)
 

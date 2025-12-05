@@ -6,11 +6,11 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:03:28 by thfernan          #+#    #+#             */
-/*   Updated: 2025/11/27 17:23:52 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:28:59 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include "push_swap.h"
 
 void	swap(t_stack *pile)
 {

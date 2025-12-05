@@ -3,34 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thais.fer <thais.fer@student.42.fr>        +#+  +:+       +#+        */
+/*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:55:14 by thais.fer         #+#    #+#             */
-/*   Updated: 2025/11/27 17:39:31 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:52:58 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include "push_swap.h"
 
 void	ft_error(void)
 {
 	ft_printf("Error\n");
 	exit(1);
 }
-
-/*long long	int_limits(long long *stack_a, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size)
-	{
-		if (stack_a[i] > INT_MAX || stack_a[i] < INT_MIN)
-			return (0);
-		i++;
-	}
-	return (1);
-}*/
 
 int	double_arg(int *stack_a, int size)
 {

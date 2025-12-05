@@ -6,11 +6,11 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 16:17:45 by thfernan          #+#    #+#             */
-/*   Updated: 2025/11/27 17:38:22 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:28:32 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include "push_swap.h"
 
 void	ft_sort_three(t_stack *a)
 {
@@ -32,7 +32,7 @@ void	ft_sort_three(t_stack *a)
 		ra(a);
 	}
 	else if (a->stack[0] < a->stack[1] && a->stack[1] > a->stack[2]
-		&& a->stack[0] < a->stack[2])
+		&& a->stack[0] > a->stack[2])
 		rra(a);
 }
 
@@ -73,44 +73,33 @@ void	ft_turk_sort(t_stack *a, t_stack *b)
 		pb(a, b);
 		size--;
 	}
-
+	ft_sort_three(a);
+	while (b->size > 0)
+		ft_move(a, b);
+	ft_finalize(a);
 }
-
-void	ft_find_target(t_stack *a, t_stack *b)
-{
-	int	target;
-
-	target = 0;
-	if ()
-}
-
-
-//int	ft_push_swap()
 
 int	main(int argc, char **argv)
 {
-	t_stack	a;
-	t_stack	b;
-	int		i;
+	t_stack	*a;
+	t_stack	*b;
 
 	if (argc < 2)
 		return (0);
-	i = 0;
-	a.size = argc - 1;
-	b.size = 0;
-	a.stack = check_args(argv, a.size);
-	b.stack = malloc(a.size * (sizeof(int)));
-	ft_turk_sort(&a, &b);
-	if (a.size > 1)
-	{
-		ft_printf("Pile A | Pile B\n");
-		while (i < a.size)
-		{
-			ft_printf("%d        %d\n", a.stack[i], b.stack[i]);
-			i++;
-		}
-	}
-	free(a.stack);
-	free(b.stack);
+	a = malloc(sizeof(t_stack));
+	b = malloc(sizeof(t_stack));
+	if (!a || !b)
+		return (1);
+	a->size = argc - 1;
+	b->size = 0;
+	a->stack = check_args(argv, a->size);
+	b->stack = malloc(a->size * sizeof(int));
+	if (!a->stack || !b->stack)
+		return (1);
+	ft_turk_sort(a, b);
+	free(a->stack);
+	free(b->stack);
+	free(a);
+	free(b);
 	return (0);
 }

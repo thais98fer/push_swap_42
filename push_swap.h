@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thais.fer <thais.fer@student.42.fr>        +#+  +:+       +#+        */
+/*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 16:36:01 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/02 09:29:38 by thais.fer        ###   ########.fr       */
+/*   Updated: 2025/12/05 19:30:18 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 enum	e_limits
 {
-	INT_MIN = -2147483648,
-	INT_MAX = 2147483647
+	int_min = -2147483648,
+	int_max = 2147483647
 };
 
 typedef struct s_stack
@@ -34,7 +34,7 @@ typedef struct s_num
 	int	index;
 }		t_num;
 
-typedef struct	s_cost
+typedef struct s_cost
 {
 	int	index_a;
 	int	index_b;
@@ -43,39 +43,53 @@ typedef struct	s_cost
 	int	total;
 }		t_cost;
 
-int			main(int argc, char **argv);
-int			double_arg(int *stack_a, int size);
-int			*check_args(char **argv, int size);
-int			is_number(char *str);
-//long long	int_limits(long long *stack_a, int size);
-void		ft_error(void);
+int		main(int argc, char **argv);
+int		double_arg(int *stack_a, int size);
+int		*check_args(char **argv, int size);
+int		is_number(char *str);
+void	ft_error(void);
 
 // Push functions.
-void		push(t_stack *src, t_stack *dest);
-void		pa(t_stack *a, t_stack *b);
-void		pb(t_stack *a, t_stack *b);
+void	push(t_stack *src, t_stack *dest);
+void	pa(t_stack *a, t_stack *b);
+void	pb(t_stack *a, t_stack *b);
 
 // Swap functions.
-void		swap(t_stack *pile);
-void		sa(t_stack *a);
-void		sb(t_stack *b);
-void		ss(t_stack *a, t_stack *b);
+void	swap(t_stack *pile);
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
 
 // Rotate functions.
-void		rotate(t_stack *pile);
-void		ra(t_stack *a);
-void		rb(t_stack *b);
-void		rr(t_stack *a, t_stack *b);
+void	rotate(t_stack *pile);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
 
 // Reverse rotate functions.
-void		reverse_rotate(t_stack *pile);
-void		rra(t_stack *a);
-void		rrb(t_stack *b);
-void		rrr(t_stack *a, t_stack *b);
+void	reverse_rotate(t_stack *pile);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
 
-// Algoritm.
-int			ft_is_sorted(int *pile_a, int size);
-void		ft_sort_three(t_stack *a);
-void		ft_turk_sort(t_stack *a, t_stack *b);
+// Finding target.
+int		ft_stack_min(t_stack *a);
+int		ft_stack_max(t_stack *a);
+int		ft_find_target(t_stack *a, int b_nbr);
+
+// Calculating moves.
+int		ft_moves_to_top(t_stack *pile, int index);
+t_cost	ft_calcuate_cost(t_stack *a, t_stack *b, int index_b);
+t_cost	ft_best_move(t_stack *a, t_stack *b);
+
+// Moving.
+void	ft_exec_rotations(t_stack *a, t_stack *b, t_cost cost);
+void	ft_move(t_stack *a, t_stack *b);
+void	ft_finalize(t_stack *a);
+
+// Final algoritm.
+int		ft_is_sorted(int *pile_a, int size);
+void	ft_sort_three(t_stack *a);
+void	ft_turk_sort(t_stack *a, t_stack *b);
 
 #endif
