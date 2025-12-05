@@ -73,7 +73,17 @@ void	ft_turk_sort(t_stack *a, t_stack *b)
 		pb(a, b);
 		size--;
 	}
+
 }
+
+void	ft_find_target(t_stack *a, t_stack *b)
+{
+	int	target;
+
+	target = 0;
+	if ()
+}
+
 
 //int	ft_push_swap()
 
@@ -87,9 +97,9 @@ int	main(int argc, char **argv)
 		return (0);
 	i = 0;
 	a.size = argc - 1;
-	b.size = argc - 1;
+	b.size = 0;
 	a.stack = check_args(argv, a.size);
-	b.stack = (int *)malloc(b.size * (sizeof(int)));
+	b.stack = malloc(a.size * (sizeof(int)));
 	ft_turk_sort(&a, &b);
 	if (a.size > 1)
 	{
