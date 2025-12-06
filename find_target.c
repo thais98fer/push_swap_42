@@ -6,7 +6,7 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 10:44:53 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/05 17:58:59 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/06 18:14:29 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,25 @@ int	ft_find_target(t_stack *a, int b_nbr)
 	int	smallest_bigger;
 	int	min_value;
 
-	i = 0;
+	i = -1;
 	target_index = -1;
 	smallest_bigger = int_max;
 	min_value = ft_stack_min(a);
-	while (i < a->size)
+	while (++i < a->size)
 	{
 		if (a->stack[i] > b_nbr && a->stack[i] < smallest_bigger)
 		{
 			smallest_bigger = a->stack[i];
 			target_index = i;
 		}
-		i++;
 	}
 	if (target_index == -1)
 	{
-		i = 0;
-		while (i < a->size)
+		i = -1;
+		while (++i < a->size)
 		{
 			if (a->stack[i] == min_value)
 				return (i);
-			i++;
 		}
 	}
 	return (target_index);

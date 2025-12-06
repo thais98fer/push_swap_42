@@ -6,17 +6,11 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:55:14 by thais.fer         #+#    #+#             */
-/*   Updated: 2025/12/05 17:52:58 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/06 20:11:00 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_error(void)
-{
-	ft_printf("Error\n");
-	exit(1);
-}
 
 int	double_arg(int *stack_a, int size)
 {
@@ -75,6 +69,9 @@ int	*check_args(char **argv, int size)
 		i++;
 	}
 	if (!double_arg(stack_a, size))
+	{
+		free(stack_a);
 		ft_error();
+	}
 	return (stack_a);
 }

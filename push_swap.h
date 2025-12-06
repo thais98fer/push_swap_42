@@ -6,7 +6,7 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 16:36:01 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/05 19:30:18 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/06 18:35:31 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ typedef struct s_stack
 	int	size;
 }		t_stack;
 
-typedef struct s_num
-{
-	int	value;
-	int	index;
-}		t_num;
-
 typedef struct s_cost
 {
 	int	index_a;
@@ -48,6 +42,7 @@ int		double_arg(int *stack_a, int size);
 int		*check_args(char **argv, int size);
 int		is_number(char *str);
 void	ft_error(void);
+void	ft_free(int *pile);
 
 // Push functions.
 void	push(t_stack *src, t_stack *dest);

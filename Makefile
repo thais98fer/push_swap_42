@@ -6,7 +6,7 @@
 #    By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/20 16:35:20 by thfernan          #+#    #+#              #
-#    Updated: 2025/12/05 12:34:07 by thfernan         ###   ########.fr        #
+#    Updated: 2025/12/06 18:37:57 by thfernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFT_DIR = libft
 SRCS = push_swap.c check_args.c push.c \
        reverse_rotate.c rotate.c swap.c \
 	   execute_moves.c cost_moves.c \
-	   find_target.c
+	   find_target.c free_error.c
 
 OBJS = $(SRCS:.c=.o)
 
