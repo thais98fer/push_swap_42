@@ -6,7 +6,7 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 10:44:53 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/06 18:14:29 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/17 19:07:02 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,33 +44,49 @@ int	ft_stack_max(t_stack *a)
 	return (max);
 }
 
-int	ft_find_target(t_stack *a, int b_nbr)
+int	ft_find_smallest_bigger(t_stack *a, int b_nbr)
 {
 	int	i;
-	int	target_index;
-	int	smallest_bigger;
-	int	min_value;
+	int	target;
+	int	smallest;
 
-	i = -1;
-	target_index = -1;
-	smallest_bigger = int_max;
-	min_value = ft_stack_min(a);
-	while (++i < a->size)
+	i = 0;
+	target = -1;
+	smallest = int_max;
+	while (i < a->size)
 	{
-		if (a->stack[i] > b_nbr && a->stack[i] < smallest_bigger)
+		if (a->stack[i] > b_nbr && a->stack[i] < smallest)
 		{
-			smallest_bigger = a->stack[i];
-			target_index = i;
+			smallest = a->stack[i];
+			target = i;
 		}
+		i++;
 	}
-	if (target_index == -1)
+	return (target);
+}
+
+int	ft_find_min_index(t_stack *a)
+{
+	int	i;
+	int	min;
+
+	min = ft_stack_min(a);
+	i = 0;
+	while (i < a->size)
 	{
-		i = -1;
-		while (++i < a->size)
-		{
-			if (a->stack[i] == min_value)
-				return (i);
-		}
+		if (a->stack[i] == min)
+			return (i);
+		i++;
 	}
-	return (target_index);
+	return (0);
+}
+
+int	ft_find_target(t_stack *a, int b_nbr)
+{
+	int	target;
+
+	target = ft_find_smallest_bigger(a, b_nbr);
+	if (target == -1)
+		return (ft_find_min_index(a));
+	return (target);
 }

@@ -6,46 +6,53 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 11:48:53 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/05 17:48:32 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/17 18:51:40 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_exec_rotations(t_stack *a, t_stack *b, t_cost cost)
+void	ft_exec_double_rotations(t_stack *a, t_stack *b, t_cost *cost)
 {
-	while (cost.moves_a > 0 && cost.moves_b > 0)
+	while (cost->moves_a > 0 && cost->moves_b > 0)
 	{
 		rr(a, b);
-		cost.moves_a--;
-		cost.moves_b--;
+		cost->moves_a--;
+		cost->moves_b--;
 	}
-	while (cost.moves_a < 0 && cost.moves_b < 0)
+	while (cost->moves_a < 0 && cost->moves_b < 0)
 	{
 		rrr(a, b);
-		cost.moves_a++;
-		cost.moves_b++;
+		cost->moves_a++;
+		cost->moves_b++;
 	}
-	while (cost.moves_a > 0)
+}
+
+void	ft_exec_single_rotations(t_stack *s, int *moves, char stack)
+{
+	while (*moves > 0)
 	{
-		ra(a);
-		cost.moves_a--;
+		if (stack == 'a')
+			ra(s);
+		else
+			rb(s);
+		(*moves)--;
 	}
-	while (cost.moves_a < 0)
+	while (*moves < 0)
 	{
-		rra(a);
-		cost.moves_a++;
+		if (stack == 'a')
+			rra(s);
+		else
+			rrb(s);
+		(*moves)++;
 	}
-	while (cost.moves_b > 0)
-	{
-		rb(b);
-		cost.moves_b--;
-	}
-	while (cost.moves_b < 0)
-	{
-		rrb(b);
-		cost.moves_b++;
-	}
+}
+
+void	ft_exec_rotations(t_stack *a, t_stack *b, t_cost cost)
+{
+	ft_exec_double_rotations(a, b, &cost);
+	ft_exec_single_rotations(a, &cost.moves_a, 'a');
+	ft_exec_single_rotations(b, &cost.moves_b, 'b');
 }
 
 void	ft_move(t_stack *a, t_stack *b)

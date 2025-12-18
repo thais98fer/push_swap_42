@@ -17,27 +17,36 @@ CC = cc
 LIBFT_A = libft/libft.a
 LIBFT_DIR = libft
 
-# push_swap.c
 SRCS = push_swap.c check_args.c push.c \
        reverse_rotate.c rotate.c swap.c \
 	   execute_moves.c cost_moves.c \
-	   find_target.c free_error.c
+	   find_target.c free_error.c count_args.c
 
 OBJS = $(SRCS:.c=.o)
 
 #==================================================#
 #                      rules                       #
 #==================================================#
+
+# Colors
+RESET = \033[0m
+RED = \033[31m
+GREEN = \033[32m
+YELLOW = \033[33m
+BLUE = \033[34m
+
 all: $(NAME)
+	@echo "$(GREEN)push_swap ready"
 
 $(NAME): $(OBJS) $(LIBFT_A)
-	$(CC) $(OBJS) $(LIBFT_A) -o $(NAME)
+	@$(CC) $(OBJS) $(LIBFT_A) -o $(NAME)
 
 $(LIBFT_A):
 	@$(MAKE) -C $(LIBFT_DIR) all
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
+	@echo "$(YELLOW)Compiling $<$(RESET)"
+	@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	@rm -f $(OBJS)

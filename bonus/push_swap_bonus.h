@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 16:36:01 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/06 18:35:31 by thfernan         ###   ########.fr       */
+/*   Created: 2025/12/17 21:13:27 by thfernan          #+#    #+#             */
+/*   Updated: 2025/12/18 09:31:25 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include "libft/libft.h"
 # include <stdlib.h>
@@ -37,17 +37,18 @@ typedef struct s_cost
 	int	total;
 }		t_cost;
 
-// Main and verifications.
 int		main(int argc, char **argv);
-int		double_arg(int *stack_a, int size);
-int		*check_args(char **argv, int *size);
-int		is_number(char *str);
-int		safe_limits(char *str);
-void	process_arg(char *arg, int *stack, int *stack_i);
+int		ft_exec_instruction(char *line, t_stack *a, t_stack *b);
+void	ft_read_and_exec(t_stack *a, t_stack *b);
 void	ft_error(void);
 void	ft_free(t_stack *pile);
+int		ft_is_sorted(int *pile_a, int size);
 int		ft_count_args(char **argv);
-void	ft_free_split(char **split);
+int		*check_args(char **argv, int *size);
+void	process_arg(char *arg, int *stack, int *stack_i);
+int		safe_limits(char *str);
+int		is_number(char *str);
+int		double_arg(int	*stack_a, int size);
 
 // Push functions.
 void	push(t_stack *src, t_stack *dest);
@@ -71,29 +72,5 @@ void	reverse_rotate(t_stack *pile);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
-
-// Finding target.
-int		ft_stack_min(t_stack *a);
-int		ft_stack_max(t_stack *a);
-int		ft_find_smallest_bigger(t_stack *a, int b_nbr);
-int		ft_find_min_index(t_stack *a);
-int		ft_find_target(t_stack *a, int b_nbr);
-
-// Calculating moves.
-int		ft_moves_to_top(t_stack *pile, int index);
-t_cost	ft_calcuate_cost(t_stack *a, t_stack *b, int index_b);
-t_cost	ft_best_move(t_stack *a, t_stack *b);
-
-// Moving.
-void	ft_exec_double_rotations(t_stack *a, t_stack *b, t_cost *cost);
-void	ft_exec_single_rotations(t_stack *s, int *moves, char stack);
-void	ft_exec_rotations(t_stack *a, t_stack *b, t_cost cost);
-void	ft_move(t_stack *a, t_stack *b);
-void	ft_finalize(t_stack *a);
-
-// Final algoritm.
-int		ft_is_sorted(int *pile_a, int size);
-void	ft_sort_three(t_stack *a);
-void	ft_turk_sort(t_stack *a, t_stack *b);
 
 #endif
