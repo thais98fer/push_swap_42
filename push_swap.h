@@ -6,7 +6,7 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 16:36:01 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/06 18:35:31 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:18:33 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ typedef struct s_cost
 // Main and verifications.
 int		main(int argc, char **argv);
 int		double_arg(int *stack_a, int size);
-int		*check_args(char **argv, int *size);
+int		*receive_args(char **argv, int *size);
+int		check_args(char **argv, int *stack_a, int *size);
 int		is_number(char *str);
 int		safe_limits(char *str);
-void	process_arg(char *arg, int *stack, int *stack_i);
+int		process_arg(char *arg, int *stack, int *stack_i);
 void	ft_error(void);
 void	ft_free(t_stack *pile);
 int		ft_count_args(char **argv);

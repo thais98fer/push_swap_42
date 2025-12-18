@@ -6,7 +6,7 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:55:14 by thais.fer         #+#    #+#             */
-/*   Updated: 2025/12/17 18:18:43 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/18 18:06:34 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,90 +32,74 @@ int	double_arg(int *stack_a, int size)
 	return (1);
 }
 
-int	is_number(char *str)
-{
-	while (*str == ' ' || *str == '\t')
-		str++;
-	if (*str == '+' || *str == '-')
-		str++;
-	if (*str == '\0')
-		return (0);
-	while (*str != '\0')
-	{
-		if (*str < '0' || *str > '9')
-			return (0);
-		str++;
-	}
-	return (1);
-}
+int	fill_array(char **split, )
+{}
 
-int	safe_limits(char *str)
-{
-	long long	tmp;
-	int			sign;
-
-	sign = 1;
-	while (*str == ' ' || *str == '\t')
-		str++;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (*str == '0')
-		str++;
-	if (*str == '\0')
-		return (0);
-	tmp = ft_atol(str) * sign;
-	if (tmp > int_max || tmp < int_min)
-		ft_error();
-	return ((int)tmp);
-}
-
-void	process_arg(char *arg, int *stack, int *stack_i)
+int	process_arg(char *arg, int *stack, int *stack_i)
 {
 	char	**split;
 	int		i;
 
+	if (!arg || arg[0] == '\0')
+		return (0);
 	split = ft_split(arg, ' ');
-	if (!split)
-		ft_error();
+	if (!split || !split[0])
+		return (0);
 	i = 0;
+	if (!fill_array)
+		return (0);
 	while (split[i])
 	{
 		if (!is_number(split[i]))
-			ft_error();
+		{
+			ft_free_split(split);
+			return (0);
+		}
 		stack[*stack_i] = safe_limits(split[i]);
+		if (!safe_limits(split[i]))
+		{
+			ft_free_split(split);
+			return (0);
+		}
 		(*stack_i)++;
 		i++;
 	}
 	ft_free_split(split);
+	return (1);
 }
 
-int	*check_args(char **argv, int *size)
+int	check_args(char **argv, int *stack_a, int *size)
 {
-	int	*stack_a;
 	int	arg_i;
 	int	i;
 
-	*size = ft_count_args(argv);
-	if (*size == 0)
-		ft_error();
-	stack_a = (int *)malloc(*size * (sizeof(int)));
-	if (!stack_a)
-		return (NULL);
 	arg_i = 1;
 	i = 0;
 	while (argv[arg_i])
 	{
-		process_arg(argv[arg_i], stack_a, &i);
+		if (!process_arg(argv[arg_i], stack_a, &i))
+			return (0);
 		arg_i++;
 	}
 	if (!double_arg(stack_a, *size))
+		return (0);
+	return (1);
+}
+
+int	*receive_args(char **argv, int *size)
+{
+	int	*stack_a;
+
+	*size = ft_count_args(argv);
+	if (*size == 0)
+		return (0);
+	stack_a = (int *)malloc(*size * (sizeof(int)));
+	if (!stack_a)
+		return (NULL);
+	if (!check_args(argv, stack_a, size))
 	{
 		free(stack_a);
-		ft_error();
+		return (0);
 	}
 	return (stack_a);
 }

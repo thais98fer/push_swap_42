@@ -6,7 +6,7 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 16:17:45 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/17 18:13:56 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/18 17:16:12 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,13 @@ int	main(int argc, char **argv)
 		return (0);
 	a = malloc(sizeof(t_stack));
 	if (!a)
-		return (1);
-	a->stack = check_args(argv, &a->size);
+		return (0);
+	a->stack = receive_args(argv, &a->size);
+	if (!a->stack)
+	{
+		ft_free(a);
+		ft_error();
+	}
 	b = ft_calloc(sizeof(t_stack), 1);
 	if (!b)
 		return (1);
@@ -97,9 +102,7 @@ int	main(int argc, char **argv)
 	if (!a->stack || !b->stack)
 		return (1);
 	ft_turk_sort(a, b);
-	free(a->stack);
-	free(b->stack);
-	free(a);
-	free(b);
+	ft_free(a);
+	ft_free(b);
 	return (0);
 }
