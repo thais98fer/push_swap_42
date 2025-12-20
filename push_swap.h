@@ -6,7 +6,7 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 16:36:01 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/18 17:18:33 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/20 13:54:29 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		double_arg(int *stack_a, int size);
 int		*receive_args(char **argv, int *size);
 int		check_args(char **argv, int *stack_a, int *size);
 int		is_number(char *str);
-int		safe_limits(char *str);
+int		safe_limits(char *str, int *out);
 int		process_arg(char *arg, int *stack, int *stack_i);
 void	ft_error(void);
 void	ft_free(t_stack *pile);

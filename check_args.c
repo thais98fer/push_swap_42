@@ -6,7 +6,7 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:55:14 by thais.fer         #+#    #+#             */
-/*   Updated: 2025/12/18 18:06:34 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/20 13:55:23 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,39 +32,41 @@ int	double_arg(int *stack_a, int size)
 	return (1);
 }
 
-int	fill_array(char **split, )
-{}
+int	fill_array(char **split, int *stack, int *stack_i)
+{
+	int	i;
+	int	value;
+
+	i = 0;
+	while (split[i])
+	{
+		if (!safe_limits(split[i], &value))
+		{
+			ft_free_split(split);
+			return (0);
+		}
+		stack[*stack_i] = value;
+		(*stack_i)++;
+		i++;
+	}
+	ft_free_split(split);
+	return (1);
+}
 
 int	process_arg(char *arg, int *stack, int *stack_i)
 {
 	char	**split;
-	int		i;
 
 	if (!arg || arg[0] == '\0')
 		return (0);
 	split = ft_split(arg, ' ');
 	if (!split || !split[0])
-		return (0);
-	i = 0;
-	if (!fill_array)
-		return (0);
-	while (split[i])
 	{
-		if (!is_number(split[i]))
-		{
-			ft_free_split(split);
-			return (0);
-		}
-		stack[*stack_i] = safe_limits(split[i]);
-		if (!safe_limits(split[i]))
-		{
-			ft_free_split(split);
-			return (0);
-		}
-		(*stack_i)++;
-		i++;
+		ft_free_split(split);
+		return (0);
 	}
-	ft_free_split(split);
+	if (!fill_array(split, stack, stack_i))
+		return (0);
 	return (1);
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   swap_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:03:28 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/05 17:28:59 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/20 17:17:37 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,15 @@ void	swap(t_stack *pile)
 void	sa(t_stack *a)
 {
 	swap(a);
-	ft_printf("sa\n");
 }
 
 void	sb(t_stack *b)
 {
 	swap(b);
-	ft_printf("sb\n");
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
 	swap(a);
 	swap(b);
-	ft_printf("ss\n");
 }

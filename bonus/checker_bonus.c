@@ -6,7 +6,7 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:17:13 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/18 09:26:28 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/20 17:06:18 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,21 @@
 
 void	ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 {
-	a->size = ft_count_args(argc, argv);
-	a->stack = check_args(argv, a->size);
+	(void)argc;
+	a->size = ft_count_args(argv);
+	a->stack = receive_args(argv, &a->size);
 	if (!a->stack)
+	{
+		ft_free(a);
 		ft_error();
+	}
 	b->size = 0;
 	b->stack = malloc(sizeof(int) * a->size);
 	if (!b->stack)
+	{
+		ft_free(a);
 		ft_error();
+	}
 }
 
 void	ft_read_and_exec(t_stack *a, t_stack *b)
@@ -70,6 +77,20 @@ int	ft_exec_instruction(char *line, t_stack *a, t_stack *b)
 	return (1);
 }
 
+int	ft_is_sorted(int *pile_a, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		if (pile_a[i] > pile_a[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	a;
@@ -77,15 +98,13 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	ft_init_stacks(&a, &b, argc, argv);
+	ft_init_stack(&a, &b, argc, argv);
 	ft_read_and_exec(&a, &b);
-	if (is_sorted(&a) && b.size == 0)
+	if (ft_is_sorted(a.stack, a.size) && b.size == 0)
 		ft_putstr_fd("OK\n", 1);
 	else
 		ft_putstr_fd("KO\n", 1);
-	free(a->stack);
-	free(b->stack);
-	free(a);
-	free(b);
+	ft_free(&a);
+	ft_free(&b);
 	return (0);
 }

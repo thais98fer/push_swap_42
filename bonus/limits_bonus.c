@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_error_bonus.c                                 :+:      :+:    :+:   */
+/*   limits_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/06 17:56:30 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/20 17:04:53 by thfernan         ###   ########.fr       */
+/*   Created: 2025/12/18 17:17:49 by thfernan          #+#    #+#             */
+/*   Updated: 2025/12/20 14:17:46 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	ft_error(void)
+int	safe_limits(char *str, int *out)
 {
-	ft_putstr_fd("Error\n", 2);
-	exit(1);
+	long long	tmp;
+
+	if (!is_number(str))
+		return (0);
+	tmp = ft_atol(str);
+	if (tmp > int_max || tmp < int_min)
+		return (0);
+	*out = (int)tmp;
+	return (1);
 }
 
-void	ft_free(t_stack *pile)
+int	is_number(char *str)
 {
-	if (pile->stack)
+	while (*str == ' ' || *str == '\t')
+		str++;
+	if (*str == '+' || *str == '-')
+		str++;
+	if (*str == '\0')
+		return (0);
+	while (*str != '\0')
 	{
-		free(pile->stack);
-		pile->stack = NULL;
+		if (*str < '0' || *str > '9')
+			return (0);
+		str++;
 	}
+	return (1);
 }

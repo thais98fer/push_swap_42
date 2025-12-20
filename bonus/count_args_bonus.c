@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_args.c                                       :+:      :+:    :+:   */
+/*   count_args_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 12:09:14 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/17 12:33:03 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:41:46 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	ft_count_args(char **argv)
 	{
 		split = ft_split(argv[i], ' ');
 		if (!split)
+		{
+			ft_free_split(split);
 			ft_error();
+		}
 		j = 0;
 		while (split[j])
 		{

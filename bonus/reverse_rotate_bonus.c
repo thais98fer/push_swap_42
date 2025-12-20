@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   reverse_rotate_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:59:41 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/05 17:28:52 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/20 17:17:21 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,15 @@ void	reverse_rotate(t_stack *pile)
 void	rra(t_stack *a)
 {
 	reverse_rotate(a);
-	ft_printf("rra\n");
 }
 
 void	rrb(t_stack *b)
 {
 	reverse_rotate(b);
-	ft_printf("rrb\n");
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	ft_printf("rrr\n");
 }

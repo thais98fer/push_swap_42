@@ -6,34 +6,23 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 17:17:49 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/18 17:58:18 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/20 13:54:14 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	safe_limits(char *str)
+int	safe_limits(char *str, int *out)
 {
 	long long	tmp;
-	int			sign;
 
-	sign = 1;
-	while (*str == ' ' || *str == '\t')
-		str++;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (*str == '0')
-		str++;
-	if (*str == '\0')
+	if (!is_number(str))
 		return (0);
-	tmp = ft_atol(str) * sign;
+	tmp = ft_atol(str);
 	if (tmp > int_max || tmp < int_min)
 		return (0);
-	return ((int)tmp);
+	*out = (int)tmp;
+	return (1);
 }
 
 int	is_number(char *str)

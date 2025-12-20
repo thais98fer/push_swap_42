@@ -6,14 +6,14 @@
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:13:27 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/18 09:31:25 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:25:32 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <stdlib.h>
 
 enum	e_limits
@@ -44,9 +44,12 @@ void	ft_error(void);
 void	ft_free(t_stack *pile);
 int		ft_is_sorted(int *pile_a, int size);
 int		ft_count_args(char **argv);
-int		*check_args(char **argv, int *size);
-void	process_arg(char *arg, int *stack, int *stack_i);
-int		safe_limits(char *str);
+void	ft_free_split(char **split);
+int		check_args(char **argv, int *stack_a, int *size);
+int		process_arg(char *arg, int *stack, int *stack_i);
+int		*receive_args(char **argv, int *size);
+int		fill_array(char **split, int *stack, int *stack_i);
+int		safe_limits(char *str, int *out);
 int		is_number(char *str);
 int		double_arg(int	*stack_a, int size);
 

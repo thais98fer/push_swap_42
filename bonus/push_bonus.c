@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   push_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:03:23 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/05 17:28:49 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/20 17:17:11 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ void	push(t_stack *src, t_stack *dest)
 void	pa(t_stack *a, t_stack *b)
 {
 	push(b, a);
-	ft_printf("pa\n");
 }
 
 void	pb(t_stack *a, t_stack *b)
 {
 	push(a, b);
-	ft_printf("pb\n");
 }

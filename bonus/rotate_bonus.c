@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   rotate_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thfernan <thfernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:03:26 by thfernan          #+#    #+#             */
-/*   Updated: 2025/12/05 17:28:56 by thfernan         ###   ########.fr       */
+/*   Updated: 2025/12/20 17:17:29 by thfernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,15 @@ void	rotate(t_stack *pile)
 void	ra(t_stack *a)
 {
 	rotate(a);
-	ft_printf("ra\n");
 }
 
 void	rb(t_stack *b)
 {
 	rotate(b);
-	ft_printf("rb\n");
 }
 
 void	rr(t_stack *a, t_stack *b)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf("rr\n");
 }
